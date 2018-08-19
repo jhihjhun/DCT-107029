@@ -30,6 +30,12 @@ namespace ConsoleApp1
                     }
                 }
 
+                var d = db.Department.Find(1);
+
+                d.Name += "!";
+
+                db.SaveChanges();
+
                 //QueryCourse(db);
 
                 //InsertDepartment(db);
