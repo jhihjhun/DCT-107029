@@ -398,6 +398,11 @@
           <Property Type="Int32" Name="DepartmentID" Nullable="false" />
           <Property Type="Binary" Name="RowVersion" Nullable="false" MaxLength="8" />
         </ComplexType>
+        <EnumType Name="CreditsType">
+          <Member Name="Good" Value="0" />
+          <Member Name="Error" Value="1" />
+          <Member Name="Warring" Value="2" />
+        </EnumType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
