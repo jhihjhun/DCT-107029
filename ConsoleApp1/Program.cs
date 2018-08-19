@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace ConsoleApp1
 {
@@ -15,13 +16,27 @@ namespace ConsoleApp1
         {
             using (var db = new ContosoUniversityEntities())
             {
-                QueryCourse(db);
+                db.Database.Log = Console.WriteLine;
 
-                InsertDepartment(db);
+                var department = db.Department.Include(x => x.Course);
 
-                UpdateDepartment(db);
+                foreach (var dept in department)
+                {
+                    Console.WriteLine(dept.Name);
 
-                RemoveDepartment(db);
+                    foreach (var item in dept.Course)
+                    {
+                        Console.WriteLine("\t" + item.Title);
+                    }
+                }
+
+                //QueryCourse(db);
+
+                //InsertDepartment(db);
+
+                //UpdateDepartment(db);
+
+                //RemoveDepartment(db);
             }
         }
 
