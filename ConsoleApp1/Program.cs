@@ -18,23 +18,28 @@ namespace ConsoleApp1
             {
                 db.Database.Log = Console.WriteLine;
 
-                var department = db.Department.Include(x => x.Course);
+                //var department = db.Department.Include(x => x.Course);
 
-                foreach (var dept in department)
-                {
-                    Console.WriteLine(dept.Name);
+                //foreach (var dept in department)
+                //{
+                //    Console.WriteLine(dept.Name);
 
-                    foreach (var item in dept.Course)
-                    {
-                        Console.WriteLine("\t" + item.Title);
-                    }
-                }
+                //    foreach (var item in dept.Course)
+                //    {
+                //        Console.WriteLine("\t" + item.Title);
+                //    }
+                //}
 
-                var d = db.Department.Find(1);
-
-                d.Name += "!";
-
+                var d = db.Department.Find(25);
+                d.Name = "John" + DateTime.Now;
+                Console.ReadLine();
                 db.SaveChanges();
+
+                //var d = db.Department.Find(1);
+
+                //d.Name += "!";
+
+                //db.SaveChanges();
 
                 //QueryCourse(db);
 
@@ -50,9 +55,11 @@ namespace ConsoleApp1
         {
             var dept = new Department()
             {
-                Name = "Will",
+                Name = "Jed",
                 Budget = 100,
-                StartDate = DateTime.Now
+                StartDate = DateTime.Now,
+                CreatedOn = DateTime.Now,
+                ModifiedOn = DateTime.Now
             };
 
             db.Department.Add(dept);
